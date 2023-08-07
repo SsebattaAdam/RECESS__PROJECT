@@ -1,0 +1,126 @@
+{% extends 'base.html' %} {% block content%}
+<!-- job-list.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    /* Custom CSS for the job-card div */
+.job-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.job-title {
+  margin-bottom: 10px;
+}
+
+.job-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.job-description {
+  flex: 2;
+}
+
+.job-details {
+  flex: 1;
+}
+
+.job-details p {
+  margin-bottom: 5px;
+}
+
+.job-apply {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Optional: Add styles for the heart icon and apply buttons */
+.btn-square {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.btn-primary {
+  padding: 8px 20px;
+  font-size: 14px;
+}
+</style>
+  </head>
+  <body>
+    <!-- job list starts here -->
+
+    <div class="container my-5 px-0 z-depth-1">
+      <h4>Job List</h4>
+      <!--Section: Content-->
+     
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-md-6 offset-md-2">
+            <h3 class="font-weight-bold"></h3>
+
+            <h5 class="h5"></h5>
+
+            <p></p>
+          </div>
+          <!--Grid column-->
+<!-- Form starts here -->
+<!-- Form starts here -->
+<div class="col-md-8 offset-md-2 mt-5">
+  <ul class="list-group">
+    {% for job in jobs %}
+    <li class="list-group-item">
+      <div class="job-card">
+        <h3 class="job-title">{{ job.title }}</h3>
+        <div class="job-info">
+          <div class="job-description">
+            <h5>Description:</h5>
+            <p>{{ job.description }}</p>
+            <h5>Requirements:</h5>
+            <p>{{ job.requirement }}</p>
+          </div>
+          <div class="job-details">
+            <h5>Date Posted:</h5>
+            <p><i class="far fa-money-bill-alt text-primary"></i> {{ job.date_posted }}</p>
+            <h5>Deadline:</h5>
+            <p><i class="far fa-money-bill-alt text-primary"></i> {{ job.deadline_date }}</p>
+            <h5>Location:</h5>
+            <p><i class="far fa-money-bill-alt text-primary"></i> {{ job.location }}</p>
+            <h4>Job Type:</h4>
+            <p><i class="far fa-money-bill-alt text-primary"></i> {{ job.job_type }}</p>
+            <h5>Company Name:</h5>
+            <p><i class="far fa-money-bill-alt text-primary"></i> {{ job.company_name }}</p>
+          </div>
+        </div>
+        <div class="job-apply">
+          <a class="btn btn-light btn-square" href=""><i class="far fa-heart text-primary"></i></a>
+          {% if current_user.is_authenticated %}
+          <a class="btn btn-primary" href="{{ url_for('authentication_blueprint.job_application_form') }}">Apply Now</a>
+          {% else %}
+          <a class="btn btn-primary" href="{{ url_for('authentication_blueprint.register') }}">Apply Now</a>
+          {% endif %}
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+<!-- Form ends here -->
+
+  </body>
+</html>
+
+{%endblock%}
