@@ -3,8 +3,9 @@
 Copyright (c) 2019 - present AppSeed.us
 """
 
-from apps.authentication.models import JobPosted, Contact,InternshipJob
+from apps.authentication.models import JobPosted, Contact,InternshipJob, JobApplication,Users
 from apps.home import blueprint
+
 from flask import render_template, request
 from flask_login import login_required
 from jinja2 import TemplateNotFound
@@ -14,8 +15,19 @@ from jinja2 import TemplateNotFound
 @blueprint.route('/index')
 @login_required
 def index():
+    user_count = Users.query.count()
+    job_posted_count = JobPosted.query.count()
+    job_application_count = JobApplication.query.count()
+    contact_count = Contact.query.count()
+    internship_job_count = InternshipJob.query.count()
 
-    return render_template('home/index.html', segment='index')
+    return render_template('home/index.html', segment='index',
+                           user_count=user_count,
+                           job_posted_count=job_posted_count,
+                           job_application_count=job_application_count,
+                           contact_count=contact_count,
+                           internship_job_count=internship_job_count)
+
 
 
 
