@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/static/assets/img/apple-icon.png"
+    />
+    <link rel="icon" type="image/png" href="/static/assets/img/favicon.png" />
+    <title>Admin Dashboard</title>
+    <!--     Fonts and icons     -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700"
+    />
+    <!-- Nucleo Icons -->
+    <link href="/static/assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="/static/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script
+      src="https://kit.fontawesome.com/42d5adcbca.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet"
+    />
+    <!-- CSS Files -->
+    <link
+      id="pagestyle"
+      href="/static/assets/css/material-dashboard.css?v=3.0.0"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="g-sidenav-show bg-gray-200 virtual-reality">
+    <div class="mt-n3">{% include 'includes/navigation.html' %}</div>
+
+    <div
+      class="border-radius-xl mx-2 mx-md-3 position-relative"
+      style="
+        background-image: url('/static/assets/img/vr-bg.jpg');
+        background-size: cover;
+      "
+    >
+  
+  <!-- Add more fields as needed -->
+  <li class="nav-item">
+    <a
+      class="nav-link text-white {% if 'billing' in segment %} active bg-gradient-primary {% endif %}"
+      href="/home/index"
+    >
+      <div
+        class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+      >
+      
+      </div>
+      <span class="nav-link-text ms-1"> Back to Dashboard</span>
+    </a>
+  </li>
+  <div class="border-radius-xl mx-2 mx-md-3 position-relative" style="background-image: url('/static/assets/img/vr-bg.jpg'); background-size: cover;">
+    <!-- Your other content here -->
+</div>
+
+<main class="main-content border-radius-lg h-100">
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card my-4">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                            <h6 class="text-white text-capitalize ps-3">Intern Job table</h6>
+                        </div>
+                    </div>
+                    <div class="card-body px-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Posted Date</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Deadline Date</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Requirements</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Company Name</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Job Type</th>
+                                        <th class="text-secondary opacity-7"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for job in jobs2 %}
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex px-2 py-1">
+                                                <div class="d-flex flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">{{ job.title }}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">{{ job.date_posted }}</p>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <span class="badge badge-sm bg-gradient-success">{{ job.deadline_date }}</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <p>
+                                                <span class="text-secondary text-xs font-weight-bold">
+                                                    {% if job.description|length > 50 %}
+                                                    {{ job.description[:50] }}...
+                                                    {% else %}
+                                                    {{ job.description }}
+                                                    {% endif %}
+                                                </span>
+                                            </p>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">{{ job.requirement }}</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">{{ job.location }}</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">{{ job.company_name }}</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">{{ job.job_type }}</span>
+                                        </td>
+                                        <td class="align-middle">
+                                            <a href="/update2/{{ job.id }}" class="btn btn-secondary btn-sm" role="button" data-toggle="modal">Update</a>
+                                            <a href="/delete2/{{ job.id }}" class="btn btn-secondary btn-sm" role="button" onclick="return confirm('Are you sure you want to delete this job post')" data-toggle="tooltip" data-original-title="Edit user" style="background-color: red; color: white;">Delete</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+      <main class="main-content border-radius-lg h-100">
+        <div class="container-fluid py-4">
+          <div class="row">
+            <div class="col-12">
+              <div class="card my-4">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                  <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                    <h6 class="text-white text-capitalize ps-3">Jobs table</h6>
+                   
+                  </div>
+                </div>
+              
+                <div class="card-body px-0 pb-2">
+                  <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                      <thead>
+                        <tr>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">posted Date</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Deadline Date</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Requirements</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Company Name</th>
+                          <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Job Type</th>
+                          <th class="text-secondary opacity-7"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            {% for job in jobs %}
+
+                            <div class="d-flex px-2 py-1">
+                             
+                              <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm">  {{ job.title }}</h6>
+                               
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <p class="text-xs font-weight-bold mb-0">  {{ job.date_posted}}</p>
+                            
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-success">  {{ job.deadline_date }}</span>
+                          </td>
+                          <td class="align-middle text-center">
+                            <p>
+                              <span class="text-secondary text-xs font-weight-bold">
+                                {% if job.description|length > 50 %}
+                                  {{ job.description[:50] }}...
+                                {% else %}
+                                  {{ job.description }}
+                                {% endif %}
+                              </span>
+                            </p>
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">
+                              {% if job.requirement|length > 50 %}
+                                {{ job.requirement[:50] }}...
+                              {% else %}
+                                {{ job.requirement }}
+                              {% endif %}
+                            </span>
+                          </td>
+                          
+                          
+                       
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">  {{ job.location}}</span>
+                            
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">  {{ job.company_name}}</span>
+                            
+                          </td>
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">  {{ job.job_type}}</span>
+                            
+                          </td>
+                          
+                          <td class="align-middle">
+                            <a href="/update/{{job.id}}" class="btn btn-secondary btn-sm" role="button" data-toggle="modal">
+                              Update
+                            </a>
+                            <a href="/delete/{{job.id}}" class="btn btn-secondary btn-sm" role="button" onclick ="return confirm('Are you sure you want to delete this job post')" data-toggle="tooltip" data-original-title="Edit user" style="background-color: red; color: white;">
+                              Delete
+                            </a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+
+                            
+               
+            </div>
+          </div>
+          {% endfor %}
+          
+                         
+                        
+          
+        </div>
+        
+
+      </main>
+      
+    </div>
+    
+   
+
+    {% include 'includes/scripts.html' %}
+    <!-- Specific Page JS goes HERE  -->
+    {% block javascripts %}{% endblock javascripts %}
+
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="/static/assets/js/material-dashboard.min.js?v=3.0.0"></script>
+  </body>
+</html>
