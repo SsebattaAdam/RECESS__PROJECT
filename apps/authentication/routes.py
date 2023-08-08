@@ -89,7 +89,7 @@ def login():
 
             login_user(user)
             if user.status == 1:
-                return render_template('/home/index.html')
+                return redirect(url_for('home_blueprint.index'))
             else:
                 
                 return render_template('index.html',jobs=jobs)
@@ -460,5 +460,8 @@ def update_job(job_id):
        
 
     return render_template('home/updateinternjob.html', job=job)
+
+
+
 
 
