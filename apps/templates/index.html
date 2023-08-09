@@ -200,9 +200,9 @@
             <div class="job-apply">
               <a class="btn btn-light btn-square" href=""><i class="far fa-heart text-primary"></i></a>
               {% if current_user.is_authenticated %}
-              <a class="btn btn-primary" href="{{ url_for('authentication_blueprint.job_application_form') }}">Apply Now</a>
+              <a class="btn btn-primary"  href="{{ url_for('authentication_blueprint.job_application_form') }}">Apply Now</a>
               {% else %}
-              <a class="btn btn-primary" href="{{ url_for('authentication_blueprint.register') }} ">Apply Now</a>
+              <a class="btn btn-primary"  href="{{ url_for('authentication_blueprint.register') }}" >Apply Now</a>
               {% endif %}
             </div>
           </div>
@@ -241,7 +241,7 @@
                 class="bg-white border rounded d-flex flex-shrink-0 align-items-center justify-content-center me-3"
                 style="width: 45px; height: 45px"
               >
-                <i class="fa fa-map-marker-alt text-primary"></i>
+                <i class="fa fa-map-marker-alt text-primary" ></i>
               </div>
               <span>Makerere University UG</span>
             </div>
@@ -326,7 +326,7 @@
                 </div>
               </div>
               <div class="col-12">
-                <button class="btn btn-primary w-100 py-3" type="submit">
+                <button class="btn btn-primary w-100 py-3" type="submit" >
                   Send Message
                 </button>
               </div>
