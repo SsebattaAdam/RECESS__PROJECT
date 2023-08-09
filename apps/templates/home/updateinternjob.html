@@ -2,7 +2,6 @@
 {% block title %}Update Job{% endblock %}
 
 {% block content %}
-<!-- Include Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <div class="alert-container">
     {% with messages = get_flashed_messages() %}
@@ -58,18 +57,11 @@
                         <input type="submit" value="Update" class="btn btn-success mt-3" />
                     </form>
                 </div>
-               
             </div>
         </div>
     </div>
 </div>
 
-<!-- Include Bootstrap JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-{% endblock content %}
-<!-- Specific Page JS goes HERE  -->
-{% block javascripts %}
-<script src="/static/assets/js/plugins/chartjs.min.js"></script>
-{% endblock javascripts %}
+{% endblock %}
