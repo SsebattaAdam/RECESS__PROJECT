@@ -1,0 +1,339 @@
+{% extends 'base.html' %} {% block content%}
+<!-- Navbar End -->
+<head>
+  <style>
+    /* Custom CSS for the job-card div */
+    .job-card {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      padding: 20px;
+      max-width: 400px; /* Set the maximum width of each job card */
+      margin: 0 auto; /* Center the job card within the column */
+    }
+    
+    /* Optional: Add styles for the heart icon and apply buttons */
+    .btn-square {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    
+    .btn-primary {
+      padding: 8px 20px;
+      font-size: 14px;
+    }
+    
+    
+  </style>
+  </style>
+</head>
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0">
+  <div class="owl-carousel header-carousel position-relative">
+    <div class="owl-carousel-item position-relative">
+      <img
+        class="img-fluid"
+        src="{{ url_for('static', filename='img/carousel-1.jpg') }}"
+      />
+      <div
+        class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+        style="background: rgba(43, 57, 64, 0.5)"
+      >
+        <div class="container">
+          <div class="row justify-content-start">
+            <div class="col-10 col-lg-8">
+              <h1 class="display-3 text-white animated slideInDown mb-4">
+                We beleive every student deserves access to quality internship and training,
+                As a student Find The Perfect Job That You Deserve
+              </h1>
+              <p class="fs-5 fw-medium text-white mb-4 pb-2">
+               
+              </p>
+            
+              <!--<a
+                href=""
+                class="btn btn-secondary py-md-3 px-md-5 animated slideInRight"
+                >Find A Talent</a
+              ><-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="owl-carousel-item position-relative">
+      <img
+        class="img-fluid"
+        src="{{ url_for('static', filename='img/carousel-2.jpg') }}"
+      />
+      <div
+        class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
+        style="background: rgba(43, 57, 64, 0.5)"
+      >
+        <div class="container">
+          <div class="row justify-content-start">
+            <div class="col-10 col-lg-8">
+              <h1 class="display-3 text-white animated slideInDown mb-4">
+                
+                Find The Best Startup Job That Fit You
+              </h1>
+              <p class="fs-5 fw-medium text-white mb-4 pb-2">
+               
+              </p>
+             
+              <!--<a
+                href=""
+                class="btn btn-secondary py-md-3 px-md-5 animated slideInRight"
+                >Find A Talent</a
+              ><-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Carousel End -->
+
+<!-- Category Start -->
+
+<!-- Category End -->
+
+<!-- About Start -->
+
+<!-- About Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="row g-0 about-bg rounded overflow-hidden">
+          <div class="col-6 text-start">
+            <img
+              class="img-fluid w-100"
+              src="{{ url_for('static', filename='img/about-1.png') }}"
+            />
+          </div>
+          <div class="col-6 text-start">
+            <img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/carousel-2.jpg') }}"
+            />
+          </div>
+          <div class="col-6 text-end">
+            <img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/carousel-2.jpg') }}"
+            />
+          </div>
+          <div class="col-6 text-end">
+            <img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/carousel-2.jpg') }}"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+        <h1 class="mb-4">We Help To Get The Best Job And Find A Talent</h1>
+        <p class="mb-4">
+          Our mission is to bridge the gap between aspiring students and exciting career opportunities. We
+          believe that every student deserves a chance to explore and thrive in
+          their chosen field, and every employer should have access to a pool of
+          talented and motivated individuals. With our user-friendly platform,
+          we connect students with valuable internships and job openings,
+          empowering them to kickstart their careers with confidence.</p> 
+          
+          <p class="mb-4">
+          We understand the challenges that students face when entering the job market. That's why we've designed
+          a powerful platform that puts the focus on your unique skills and
+          aspirations. Whether you're a recent graduate seeking your first
+          internship or a seasoned student looking for your next big
+          opportunity, our platform is your gateway to success.</p> 
+         
+          <p class="mb-4">
+            Join us today and unlock a world of possibilities</p>
+        </p>
+    
+        <a class="btn btn-primary py-3 px-5 mt-3" href="/about">Read More</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- About ends -->
+
+<!-- Form starts here -->
+<div class="col-md-8 offset-md-2 mt-5">
+  <ul class="list-group">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      {% for job in jobs %}
+      <li class="list-group-item">
+        <div class="col">
+          <div class="job-card">
+            <h3 class="job-title">{{ job.title }}</h3>
+            <div class="job-info">
+              <div class="job-description">
+                <h4>Job Description:</h4>
+                <p>{{ job.description }}</p>
+                <h4>Job Requirement:</h4>
+                <p>{{ job.requirement }}</p>
+              </div>
+              <div class="job-details">
+                <h4>Date Posted:</h4>
+                <p>{{ job.date_posted }}</p>
+                <h4>Deadline:</h4>
+                <p>{{ job.deadline_date }}</p>
+                <h4>Location:</h4>
+                <p>{{ job.location }}</p>
+                <h4>Job Type:</h4>
+                <p>{{ job.job_type }}</p>
+                <h4>Company Name:</h4>
+                <p>{{ job.company_name }}</p>
+              </div>
+            </div>
+            <div class="job-apply">
+              <a class="btn btn-light btn-square" href=""><i class="far fa-heart text-primary"></i></a>
+              {% if current_user.is_authenticated %}
+              <a class="btn btn-primary" href="{{ url_for('authentication_blueprint.job_application_form') }}">Apply Now</a>
+              {% else %}
+              <a class="btn btn-primary" href="{{ url_for('authentication_blueprint.register') }} ">Apply Now</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </div>
+  </ul>
+</div>
+<!-- Form ends here -->
+</div>
+<!--Grid row-->
+</section>
+<!--Section: Content-->
+</div>
+<!-- Form ends here -->
+
+
+
+
+
+
+
+<!-- Contact Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+      Contact For Any Query
+    </h1>
+    <div class="row g-4">
+      <div class="col-12">
+        <div class="row gy-4">
+          <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
+            <div class="d-flex align-items-center bg-light rounded p-4">
+              <div
+                class="bg-white border rounded d-flex flex-shrink-0 align-items-center justify-content-center me-3"
+                style="width: 45px; height: 45px"
+              >
+                <i class="fa fa-map-marker-alt text-primary"></i>
+              </div>
+              <span>Makerere University UG</span>
+            </div>
+          </div>
+          <div class="col-md-4 wow fadeIn" data-wow-delay="0.3s">
+            <div class="d-flex align-items-center bg-light rounded p-4">
+              <div
+                class="bg-white border rounded d-flex flex-shrink-0 align-items-center justify-content-center me-3"
+                style="width: 45px; height: 45px"
+              >
+                <i class="fa fa-envelope-open text-primary"></i>
+              </div>
+              <span>info@example.com</span>
+            </div>
+          </div>
+          <div class="col-md-4 wow fadeIn" data-wow-delay="0.5s">
+            <div class="d-flex align-items-center bg-light rounded p-4">
+              <div
+                class="bg-white border rounded d-flex flex-shrink-0 align-items-center justify-content-center me-3"
+                style="width: 45px; height: 45px"
+              >
+                <i class="fa fa-phone-alt text-primary"></i>
+              </div>
+              <span>+256 753697012</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+   
+      <div class="col-md-6">
+        <div class="wow fadeInUp" data-wow-delay="0.5s">
+          <p class="mb-4"></p>
+          <form method="POST" action= "/contact">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    placeholder="Your Name"
+                  />
+                  <label for="name">Your Name</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Your Email"
+                  />
+                  <label for="email">Your Email</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="subject"
+                    name="subject"
+                    placeholder="Subject"
+                  />
+                  <label for="subject">Subject</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <textarea
+                    class="form-control"
+                    placeholder="Leave a message here"
+                    id="message"
+                    name="message"
+                    style="height: 150px"
+                  ></textarea>
+                  <label for="message">Message</label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary w-100 py-3" type="submit">
+                  Send Message
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+<!-- Contact End -->
+
+{% endblock %}

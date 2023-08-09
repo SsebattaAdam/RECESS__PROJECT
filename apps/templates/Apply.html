@@ -1,209 +1,168 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Application Form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    form {
+      text-align: center;
+      margin: 0 auto;
+      max-width: 500px;
+    }
+    fieldset {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin: 15px 0;
+    }
+    legend {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    label {
+      display: block;
+      margin: 10px 0;
+    }
+    input[type="text"],
+    input[type="date"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .two-cols {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btns {
+      margin-top: 15px;
+      background-color: red;
+    }
+    input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2em;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    p {
+      margin: 5px 0;
+    }
+    /* Your existing styling... */
+    /* Styling for custom file input */
+    .file-label {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .file-input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    .file-custom {
+      display: inline-block;
+      padding: 6px 12px;
+      background-color: #4caf50;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .file-info {
+      margin: 10px 0;
+      font-size: 14px;
+      color: #888;
+    }
+  </style>
 </head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Job Application Form</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-      }
-
-      form {
-        text-align: center;
-        margin: 0 auto;
-        max-width: 500px;
-      }
-
-      fieldset {
-        border: 1px solid #ccc;
-        padding: 15px;
-        margin: 15px 0;
-      }
-
-      legend {
-        font-weight: bold;
-        font-size: 1.2em;
-      }
-
-      label {
-        display: block;
-        margin: 10px 0;
-      }
-
-      input[type="text"],
-      input[type="date"],
-      input[type="tel"],
-      input[type="email"],
-      input[type="file"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-      }
-
-      .two-cols {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .btns {
-        margin-top: 15px;
-        
-      }
-
-      input[type="submit"] {
-        padding: 10px 20px;
-        background-color: #4caf50;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1.2em;
-      }
-
-      input[type="submit"]:hover {
-        background-color: #45a049;
-      }
-
-      p {
-        margin: 5px 0;
-      }
-      body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-      }
-
-      /* Your existing styling... */
-
-      /* Styling for custom file input */
-      .file-label {
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-      }
-
-      .file-input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-      }
-
-      .file-custom {
-        display: inline-block;
-        padding: 6px 12px;
-        background-color: #4caf50;
-        color: #fff;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .file-info {
-        margin: 10px 0;
-        font-size: 14px;
-        color: #888;
-      }
-    </style>
-  </head>
-  <body>
-    <form
-      method="POST"
-      id="ft-form"
-      method="POST"
-      accept-charset="UTF-8"
-      enctype="multipart/form-data"
-      action=""
-    >
-      <fieldset>
-        <h3>Personal data</h3>
-        <label>
-          First name
-          <input type="text" name="First name" required />
+<body>
+  <form method="POST" id="ft-form" method="POST" accept-charset="UTF-8" enctype="multipart/form-data" action="">
+    <fieldset>
+      <h3>Personal data</h3>
+      <label>
+        First name
+        <input type="text" name="First name" required>
+      </label>
+      <label>
+        Surname
+        <input type="text" name="Surname" required>
+      </label>
+      <label>
+        Citizenship
+        <input type="text" name="Citizenship">
+      </label>
+      <label>
+        Date of birth
+        <input type="date" name="Date of birth">
+      </label>
+      <label>
+        Address
+        <input type="text" name="Address">
+      </label>
+      <label>
+        City
+        <input type="text" name="City">
+      </label>
+      <label>
+        Phone
+        <input type="tel" name="Phone" required>
+      </label>
+      <label>
+        Email address
+        <input type="email" name="Email" required>
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Upload file</legend>
+      <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
+      <div class="two-cols">
+        <label class="file-label">
+          Curriculum vitae
+          <input type="file" name="Curriculum vitae" accept=".doc,.docx,.pdf" class="file-input">
         </label>
-        <label>
-          Surname
-          <input type="text" name="Surname" required />
-        </label>
-        <label>
-          Citizenship
-          <input type="text" name="Citizenship" />
-        </label>
-        <label>
-          Date of birth
-          <input type="date" name="Date of birth" />
-        </label>
-        <label>
-          Address
-          <input type="text" name="Address" />
-        </label>
-        <label>
-          City
-          <input type="text" name="City" />
-        </label>
-        <label>
-          Phone
-          <input type="tel" name="Phone" required />
-        </label>
-        <label>
-          Email address
-          <input type="email" name="Email" required />
-        </label>
-      </fieldset>
-      <fieldset>
-        <legend>Upload file</legend>
-        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
-        <div class="two-cols">
-          <label>
-            Curriculum vitae
-            <input
-              type="file"
-              name="Curriculum vitae"
-              accept=".doc,.docx,.pdf"
-            />
-          </label>
-        </div>
-        <p>Possible file types: DOC, PDF. Maximum file size: 10 MB.</p>
-      </fieldset>
-      <div class="btns">
-        <input
-          type="text"
-          name="_gotcha"
-          id="yes"
-          value=""
-          style="display: none"
-        />
-        <input type="submit" value="Submit" />
       </div>
-    </form>
-    {% with messages = get_flashed_messages() %} {% if messages %}
-    <div class="alert-container">
-      {% for message in messages %}
-      <div class="alert alert-success alert-dismissible" role="alert">
-        <button
-          type="button"
-          class="close"
-          data-dismiss="alert"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-        {{ message }}
-      </div>
-      {% endfor %}
+      <p>Possible file types: DOC, PDF. Maximum file size: 10 MB.</p>
+    </fieldset>
+    <div class="btns">
+      <input type="text" name="_gotcha" id="yes" value="" style="display: none">
+      <input type="submit" value="Submit">
     </div>
+  </form>
+  <div class="alert-container">
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{ message }}
+    </div>
+    {% endfor %}
     {% endif %} {% endwith %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </body>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
 {% endblock %}

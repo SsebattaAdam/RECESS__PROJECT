@@ -1,0 +1,134 @@
+{% extends "layouts/base.html" %} {% block title %}Post Internship Job{%
+endblock %} {% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Post A New Internship Job</title>
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Include your specific CSS here -->
+    <style>
+      body {
+        background-color: #f5f5f5;
+        color: #333;
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      label {
+        color: #4caf50;
+        font-weight: bold;
+      }
+      input[type="text"],
+      input[type="date"],
+      textarea,
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <div class="alert-container">
+      {% for message in messages %}
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %} {% endwith %}
+    <h1>Post A New Internship Job</h1>
+    <form action="" method="POST">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required /><br />
+
+      <label for="date_posted">Date Posted:</label>
+      <input type="date" id="date_posted" name="date_posted" required /><br />
+
+      <label for="deadline_date">Deadline Date:</label>
+      <input
+        type="date"
+        id="deadline_date"
+        name="deadline_date"
+        required
+      /><br />
+
+      <label for="description">Description:</label><br />
+      <textarea
+        id="description"
+        name="description"
+        rows="4"
+        cols="50"
+        required
+      ></textarea
+      ><br />
+
+      <label for="company_name">Company Name:</label>
+      <input type="text" id="company_name" name="company_name" required /><br />
+
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" required /><br />
+
+      <label for="requirement">Requirement:</label><br />
+      <textarea
+        id="requirement"
+        name="requirement"
+        rows="4"
+        cols="50"
+        required
+      ></textarea
+      ><br />
+
+      <label for="job_type">Job Type:</label>
+      <select id="job_type" name="job_type" required>
+        <option value="Internship">Internship</option></select
+      ><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- Flashed messages code here -->
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
+{% endblock content %}

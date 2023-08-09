@@ -1,0 +1,84 @@
+{% extends 'base.html' %} {% block content%}
+
+<!-- Navbar End -->
+
+<!-- About Start -->
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+        <div class="row g-0 about-bg rounded overflow-hidden">
+          <div class="col-6 text-start">
+            <img
+              class="img-fluid w-100"
+              src="{{ url_for('static', filename='img/about-1.png') }}"
+            />
+          </div>
+          <div class="col-6 text-start">
+            <img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/carousel-2.jpg') }}"
+            />
+          </div>
+          <div class="col-6 text-end">
+            <img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/carousel-2.jpg') }}"
+            />
+          </div>
+          <div class="col-6 text-end">
+            <img
+              class="img-fluid"
+              src="{{ url_for('static', filename='img/carousel-2.jpg') }}"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+        <h1 class="mb-4">We Help To Get The Best Job And Find A Talent</h1>
+        <p class="mb-4">
+          Our mission is to bridge the gap between aspiring students and exciting career opportunities. We
+          believe that every student deserves a chance to explore and thrive in
+          their chosen field, and every employer should have access to a pool of
+          talented and motivated individuals. With our user-friendly platform,
+          we connect students with valuable internships and job openings,
+          empowering them to kickstart their careers with confidence.</p> 
+          
+          <p class="mb-4">
+          We understand the challenges that students face when entering the job market. That's why we've designed
+          a powerful platform that puts the focus on your unique skills and
+          aspirations. Whether you're a recent graduate seeking your first
+          internship or a seasoned student looking for your next big
+          opportunity, our platform is your gateway to success.</p> 
+          <p class="mb-4">
+          Hundreds of students have already found their dream opportunities through us. We take immense pride in the success stories of our users, and
+          nothing motivates us more than seeing our platform transform lives and
+          careers.</p>
+          <p class="mb-4">
+          Your privacy and security are our top priorities. We follow stringent data protection measures to ensure
+          your personal information is safe and only used for connecting you
+          with relevant opportunities.</p> 
+          <p class="mb-4">
+          If you have any questions or need assistance, our friendly support team is here to help. Reach
+          out to us via our contact form, and we'll respond promptly.</p>
+          <p class="mb-4">
+            Join us today and unlock a world of possibilities</p>
+        </p>
+        <!--<p>
+          <i class="fa fa-check text-primary me-3"></i>
+        </p>
+        <p>
+          <i class="fa fa-check text-primary me-3"></i>Aliqu diam amet diam et
+          eos
+        </p>
+        <p>
+          <i class="fa fa-check text-primary me-3"></i>Clita duo justo magna
+          dolore erat amet
+        </p><-->
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

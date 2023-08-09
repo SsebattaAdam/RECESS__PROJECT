@@ -1,101 +1,66 @@
-{% extends "layouts/base.html" %}{% block title %} post job{% endblock %}
-
-<!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+{% extends "layouts/base.html" %}
+{% block title %}Post Job{% endblock %}
+{% block content %}
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Post A New Job</title>
-    <!-- Include jQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<!-- Include Bootstrap JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
-
-  </head>
-  <body>
-    <h1>Post A New Job</h1>
-    <form action="" method="POST">
-      <label for="title">Title:</label>
-      <input type="text" id="title" name="title" required /><br />
-
-      <label for="date_posted">Date Posted:</label>
-      <input type="date" id="date_posted" name="date_posted" required /><br />
-
-      <label for="deadline_date">Deadline Date:</label>
-      <input
-        type="date"
-        id="deadline_date"
-        name="deadline_date"
-        required
-      /><br />
-
-      <label for="description">Description:</label><br />
-      <textarea
-        id="description"
-        name="description"
-        rows="4"
-        cols="50"
-        required
-      ></textarea
-      ><br />
-      <label for="company_name">Company Name:</label>
-      <input type="text" id="company_name" name="company_name" required><br>
-
-      <label for="location">Location:</label>
-      <input type="text" id="location" name="location" required><br>
-
-      <label for="description">Requirement:</label><br />
-      <textarea
-        id="requirement"
-        name="requirement"
-        rows="4"
-        cols="50"
-        required
-      ></textarea
-      ><br />
-
-      <!--<label for="requirement">Requirement:</label>
-      <select id="requirement" name="requirement" required>
-        <option value="">Select Requirement</option>
-        <option value="Bsc.Degree">Bsc. Degree</option>
-        <option value="Diploma">Diploma</option>
-        <option value="Certificate">Certificate</option></select
-      ><br />-->
-      
-      <label for="job_type">Job Type:</label>
-      <select id="job_type" name="job_type" required>
-          <option value="Full-time">Full-time</option>
-          <option value="Part-time">Part-time</option>
-          <option value="Contract">Contract</option>
-          <!--<option value="Internship">Internship</option>-->
-          <option value="Temporary">Temporary</option>
-      </select><br>
-
-      <input type="submit" value="Submit" />
-      {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        {% for message in messages %}
-          <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true"></span>
-            </button>
-            {{ message }}
-          </div>
-        {% endfor %}
-      {% endif %}
+    <style>
+        /* Your custom styles */
+    </style>
+</head>
+<body>
+<div class="mt-n3">{% include 'includes/navigation.html' %}</div>
+<div class="alert-container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
     {% endwith %}
-    
-    </form>
-  </body>
-</html>
-
-  {% endblock content %}
-
-  <!-- Specific Page JS goes HERE  -->
-  {% block javascripts %}
-
-  <script src="/static/assets/js/plugins/chartjs.min.js"></script>
-
-  {% endblock javascripts %}
 </div>
+<h1>Post A New Job</h1>
+<form action="" method="POST">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required /><br />
+
+    <label for="date_posted">Date Posted:</label>
+    <input type="date" id="date_posted" name="date_posted" required /><br />
+
+    <label for="deadline_date">Deadline Date:</label>
+    <input type="date" id="deadline_date" name="deadline_date" required /><br />
+
+    <label for="description">Description:</label><br />
+    <textarea id="description" name="description" rows="4" cols="50" required></textarea><br />
+
+    <label for="company_name">Company Name:</label>
+    <input type="text" id="company_name" name="company_name" required /><br />
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" name="location" required /><br />
+
+    <label for="requirement">Requirement:</label><br />
+    <textarea id="requirement" name="requirement" rows="4" cols="50" required></textarea><br />
+
+    <label for="job_type">Job Type:</label>
+    <select id="job_type" name="job_type" required>
+        <option value="Full-time">Full-time</option>
+        <option value="Part-time">Part-time</option>
+        <option value="Contract">Contract</option>
+        <option value="Temporary">Temporary</option>
+    </select><br />
+
+    <input type="submit" value="Submit" />
+</form>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>
+{% endblock %}
