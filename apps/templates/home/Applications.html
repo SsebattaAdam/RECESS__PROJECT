@@ -1,0 +1,147 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Tables {% endblock %} 
+
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<head>
+  <style>
+    .btn-red {
+      background-color: red;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+  
+    .btn-red:hover {
+      background-color: darkred;
+    }
+ 
+    .btn-blue {
+      background-color: blue;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+  
+    .btn-blue:hover {
+      background-color: darkblue;
+    }
+  </style>
+  
+  
+</head>
+
+  <div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card my-4">
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+              <h6 class="text-white text-capitalize ps-3">Applications Table</h6>
+            </div>
+          </div>
+          <div class="card-body px-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">First_name</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Surname</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Citizenship</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date_of_birth</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Address</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">City</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">phone</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email_Address</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Calcum_Viteapath</th>
+                    
+                    
+                    <th class="text-secondary opacity-7"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                 
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <tbody>
+                          {% for job_application in job_applications %}
+                          <tr>
+                           
+                          
+                            <td>
+                             
+                              <div class="d-flex px-2 py-1">
+                               
+                                <div class="d-flex flex-column justify-content-center">
+                                  <h6 class="mb-0 text-sm"> {{ job_application.first_name }}</h6>
+                                  
+                                </div>
+                              </div>
+                           
+                            </td>
+                            <td>
+                              <p class="text-xs font-weight-bold mb-0">{{ job_application.surname }}</p>
+                             
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                              <span class="badge badge-sm bg-gradient-success">{{ job_application.citizenship }}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                              <span class="text-secondary text-xs font-weight-bold">{{ job_application.date_of_birth  }}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                              <span class="text-secondary text-xs font-weight-bold">{{ job_application.address  }}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                              <span class="text-secondary text-xs font-weight-bold">{{ job_application.city  }}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                              <span class="text-secondary text-xs font-weight-bold">{{ job_application.phone }}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                              <span class="text-secondary text-xs font-weight-bold">{{ job_application.email }}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                              <span class="text-secondary text-xs font-weight-bold">{{ job_application.cv_filename }}</span>
+                            </td>
+                            <td class="align-middle">
+                              {% if job_application.cv_filename %}
+                              <a href="{{ url_for('authentication_blueprint.download_cv', filename=job_application.cv_filename) }}" class="btn btn-blue">Download CV</a>
+                              {% else %}
+                              No CV uploaded
+                              {% endif %}
+                              <form action="{{ url_for('authentication_blueprint.delete_application', application_id=job_application.id) }}" method="post">
+                                <button type="submit" class="btn btn-red" onclick ="return confirm('Are you sure you want to delete this application?')">Delete</button>
+                              </form>
+                            </td>
+                          </tr>
+                          
+                          {% endfor %}
+                  </tr>
+                  <tr>
+                    <td>
+                     
+                      <div class="d-flex px-2 py-1">
+                        
+                       
+                   
+        </div>
+      </div>
+    </div>
+    
+                   
+                  
+    
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

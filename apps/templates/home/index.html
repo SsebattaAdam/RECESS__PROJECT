@@ -1,35 +1,99 @@
-{% extends "layouts/base.html" %} {% block title %} Admin dashboard {% endblock
-%}
-
-<!-- Specific Page CSS goes HERE  -->
-{% block stylesheets %}{% endblock stylesheets %} {% block content %}
-<h1>welcome on Admin page</h1>
-
-<div class="container my-5 px-0 z-depth-1">
-  <!--Section: Content-->
-  <section
-    class="text-center text-lg-left white-text grey p-5"
-    style="
-      background-image: url(https://mdbootstrap.com/img/Photos/Others/background2.jpg);
-    "
-  >
-    <!--Grid row-->
-    <div class="row">
-      <!--Grid column-->
-      <div class="col-md-6 offset-md-2">
-        <h3 class="font-weight-bold">Call to action</h3>
-
-        <h5 class="h5"></h5>
-
-        <p></p>
+{% extends "layouts/base.html" %} {% block title %}Admin dashboard{% endblock %}
+{% block content %}
+<div class="container-fluid my-5">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title font-weight-bold">Users</h4>
+          <canvas id="userChart" width="400" height="200"></canvas>
+        </div>
       </div>
-      <!--Grid column-->
     </div>
-    <!--Grid row-->
-  </section>
-  <!--Section: Content-->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title font-weight-bold">Job Posted</h4>
+          <canvas id="jobPostedChart" width="400" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title font-weight-bold">Job Applications</h4>
+          <canvas id="jobApplicationChart" width="400" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title font-weight-bold">Contacts</h4>
+          <canvas id="contactChart" width="400" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title font-weight-bold">Internship Jobs</h4>
+          <canvas id="internshipJobChart" width="400" height="200"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-{% endblock content %}
+<!-- Specific Page JS goes HERE -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Fetch counts from the Flask route using an API call
+  fetch("/index_counts") // Update with your Flask route URL
+    .then((response) => response.json())
+    .then((data) => {
+      createBarChart("userChart", "Users", data.user_count);
+      createBarChart("jobPostedChart", "Job Posted", data.job_posted_count);
+      createBarChart(
+        "jobApplicationChart",
+        "Job Applications",
+        data.job_application_count
+      );
+      createBarChart("contactChart", "Contacts", data.contact_count);
+      createBarChart(
+        "internshipJobChart",
+        "Internship Jobs",
+        data.internship_job_count
+      );
+    })
+    .catch((error) => console.error("Error fetching data:", error));
 
-<!-- Specific Page JS goes HERE  -->
+  // Function to create a bar chart
+  function createBarChart(elementId, label, data) {
+    var ctx = document.getElementById(elementId).getContext("2d");
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: [label],
+        datasets: [
+          {
+            label: "Count",
+            data: [data],
+            backgroundColor: "brown",
+            borderColor: "rgba(75, 192, 192, 1)",
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+  }
+</script>
+
+{% endblock content %}
