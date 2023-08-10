@@ -3,7 +3,7 @@
 Copyright (c) 2019 - present AppSeed.us
 """
 
-from flask import app, render_template, redirect, request, send_file, send_from_directory, url_for, flash
+from flask import app, jsonify, render_template, redirect, request, send_file, send_from_directory, url_for, flash
 from flask_login import (
     current_user,
     login_user,
@@ -306,6 +306,8 @@ def job_application_form():
         )
         db.session.add(job_application)
         db.session.commit()
+        flash('Your job application has been submitted successfully!', 'success')  # Adding a flash message
+
 
     return render_template('/Apply.html')
 
@@ -361,6 +363,7 @@ def contact():
 
         # Redirect to the homepage after submitting the form
         return redirect('/')
+    flash("Contact submitted  successfully!")
 
     return render_template('contact.html')
 
@@ -408,6 +411,8 @@ def post_job():
 
         db.session.add(job)
         db.session.commit()
+        
+        flash('job  has been posted successfully!', 'success') 
 
        
 
@@ -457,7 +462,7 @@ def update_job(job_id):
 
         db.session.commit()
 
-       
+        flash('job  has been updated successfully!', 'success') 
 
     return render_template('home/updateinternjob.html', job=job)
 
@@ -465,3 +470,18 @@ def update_job(job_id):
 
 
 
+@blueprint.route('/index_counts')
+def index_counts():
+    user_count = Users.query.count()
+    job_posted_count = JobPosted.query.count()
+    job_application_count = JobApplication.query.count()
+    contact_count = Contact.query.count()
+    internship_job_count = InternshipJob.query.count()
+
+    return jsonify({
+        'user_count': user_count,
+        'job_posted_count': job_posted_count,
+        'job_application_count': job_application_count,
+        'contact_count': contact_count,
+        'internship_job_count': internship_job_count
+    })

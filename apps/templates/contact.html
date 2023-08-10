@@ -1,15 +1,12 @@
 {% extends 'base.html' %} {% block content%}
 <!-- Header End -->
 <!-- Include Bootstrap CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+/>
 <!-- Contact Start -->
 <div class="container-xxl py-5">
-  <section
-  class="text-center text-lg-left white-text grey p-5"
-  style="
-    background-image: url(https://mdbootstrap.com/img/Photos/Others/background2.jpg);
-  "
->
   <div class="container">
     <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
       Contact For Any Query
@@ -110,25 +107,30 @@
                 <button class="btn btn-primary w-100 py-3" type="submit">
                   Send Message
                 </button>
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
+                {% with messages = get_flashed_messages() %} {% if messages %}
                 <div class="alert-container">
                   {% for message in messages %}
-                  <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <div
+                    class="alert alert-success alert-dismissible"
+                    role="alert"
+                  >
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                    >
                       <span aria-hidden="true">&times;</span>
                     </button>
                     {{ message }}
                   </div>
                   {% endfor %}
                 </div>
-                {% endif %}
-                {% endwith %}
-              
+                {% endif %} {% endwith %}
+
                 <!-- Include Bootstrap JS -->
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-              
               </div>
             </div>
           </form>

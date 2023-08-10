@@ -21,7 +21,6 @@
     </style>
   </head>
   <body>
-    <h1>Dashboard</h1>
     <div class="container my-5 px-0 z-depth-1">
       <!--Section: Content-->
       <section
@@ -63,11 +62,13 @@
       <a
         class="btn btn-primary"
         href="{{ url_for('authentication_blueprint.job_application_form') }}"
+        style="color: red"
         >Apply Now</a
       >
       {% else %}
       <a
         class="btn btn-primary"
+        style="background-color: red"
         href="{{ url_for('authentication_blueprint.register') }}"
         >Apply Now</a
       >
@@ -77,4 +78,7 @@
   </body>
 </html>
 
+
 {% endblock %}
+
+
